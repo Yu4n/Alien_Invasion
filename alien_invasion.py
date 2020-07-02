@@ -50,6 +50,7 @@ class AlienInvasion:
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
         self._check_bullet_alien_collisions()
+        self.sb.check_high_score()
         # print(len(self.bullets))
 
     def _check_bullet_alien_collisions(self):
@@ -67,6 +68,10 @@ class AlienInvasion:
             self.bullets.empty()
             self._create_fleet()
             self.settings.increase_speed()
+
+            # Increase level.
+            self.stats.level += 1
+            self.sb.prep_level()
 
     def _check_event(self):
         for event in pygame.event.get():
@@ -93,6 +98,7 @@ class AlienInvasion:
         self.stats.reset_stats()
         self.stats.game_active = True
         self.sb.prep_score()
+        self.sb.prep_level()
 
         # Get rid of any remaining aliens and bullets.
         self.aliens.empty()
