@@ -11,7 +11,6 @@ class GameStats:
         self.high_score = 0
 
         self.score = 0
-        self.ships_left = None
 
         self.level = 1
 
