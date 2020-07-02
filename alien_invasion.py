@@ -122,6 +122,10 @@ class AlienInvasion:
         elif event.key == pygame.K_DOWN:
             self.ship.moving_down = True
         elif event.key == pygame.K_q:
+            print(self.stats.high_score)
+            f = open("record.txt", 'w')
+            f.write(str(self.stats.high_score))
+            f.close()
             sys.exit()
         elif event.key == pygame.K_SPACE:
             if self.stats.game_active:
